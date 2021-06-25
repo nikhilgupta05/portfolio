@@ -6,31 +6,33 @@ Here are some of the basic code snippets for starters.
 ### Virtual Environments
 Think of it as new OS (or a new machine) for your python installation. And NOT a new python environment for your OS.
 
-How to setup?
+**How to setup?**
 ```markdown
 "C:\Program Files\Python38\Python.exe" -m venv virtenv
 ```
-- Full path for python.exe is required in case the PATH variable doesn't include it.
-- m signifies module
-- venv is a tool (the module) to create virtual environment for python3. It is included in the standard python3 installation. In Python2, virtualenv did the similar job.
-- virtenv is the name of virtual environment to be created. A folder named virtenv will get created with certain subfolders and files.
+- Full path for python.exe is required in case the **PATH** variable doesn't include it.
+- m signifies module. **venv** is a tool (the module) to create virtual environment for python3. It is included in the standard python3 installation. In Python2, virtualenv did the similar job.
+- virtenv is the **name** of virtual environment to be created. A folder named virtenv will get created with certain subfolders and files.
 
-** Activate virtual environment **
+**Activate virtual environment**
 ```markdown
 "virtenv/Scripts/activate.bat"
 ```
 
-** Jupyter notebooks **
+**Jupyter**
+Jupyter is the most popular IDE for python (and few other languages like Julia, R etc). 
+
 ```markdown
 pip install jupyterlab
 ```
 
+**Jupyter notebooks** A jupyter server is started, and a browser window talks to server in a secured manner over REST API.
 ```markdown
+jupyter notebook
 jupyter lab
 ```
 
-
-** Deactivate virtual environment **
+**Deactivate virtual environment**
 ```markdown
 "virtenv/Scripts/deactivate.bat"
 ```

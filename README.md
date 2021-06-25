@@ -11,7 +11,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 How to setup virtual environment?
 ```markdown
 "C:\Program Files\Python38\Python.exe" -m venv virtenv
-'''
+```
 - The full path for python.exe is required in case the PATH variable doesn't include it.
 - -m signifies module
 - venv is a tool to create virtual environment for python3. It is included in the standard python3 installation. In Python2, virtualenv did the similar job.
@@ -20,15 +20,16 @@ How to setup virtual environment?
 ```markdown
 "virtenv/Scripts/activate.bat"
 "virtenv/Scripts/deactivate.bat"
-'''
+```
 Command to activate and deactivate a virtual environment
 
 ```markdown
 pip install jupyterlab
-'''
+```
 
+```markdown
 jupyter lab
-
+```
 
 # Header 1
 ## Header 2

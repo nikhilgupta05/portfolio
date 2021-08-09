@@ -16,7 +16,8 @@ Think of it as new OS (or a new machine) for your python installation. And NOT a
 
 **Activate virtual environment**
 ```markdown
-"virtenv/Scripts/activate.bat"
+"virtenv/Scripts/activate.bat"  # Windows
+source virtenv/bin/activate  # Linux
 ```
 
 **Jupyter**
@@ -34,7 +35,8 @@ jupyter lab
 
 **Deactivate virtual environment**
 ```
-"virtenv/Scripts/deactivate.bat"
+"virtenv/Scripts/deactivate.bat" # Windows
+deactivate # Linux
 ```
 
 ### Apache Spark

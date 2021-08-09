@@ -16,10 +16,7 @@ Think of it as new OS (or a new machine) for your python installation. And NOT a
 
 **Activate virtual environment**
 ```markdown
-# Windows
 "virtenv/Scripts/activate.bat"
-# Linux
-source virtenv/bin/activate
 ```
 
 **Jupyter**
@@ -29,19 +26,6 @@ Jupyter is the most popular IDE for python (and few other languages like Julia, 
 pip install jupyterlab
 
 ```
-Below statement generate "jupyter_server_config.py" inside "/.jupyter" folder
-```
-jupyter server --generate-config
-```
-
-To password protect our jupyter notebooks
-```
-jupyter server password
-Enter password:  ****
-Verify password: ****
-[JupyterPasswordApp] Wrote hashed password to /.jupyter/jupyter_server_config.json
-
-```
 
 **Jupyter notebooks** A jupyter server is started, and a browser window talks to server in a secured manner over REST API.
 ```markdown
@@ -49,7 +33,27 @@ jupyter notebook
 jupyter lab
 ```
 
-** If planning to start the jupyter server in a virtual machine in cloud**
+**Deactivate virtual environment**
+
+```markdown
+"virtenv/Scripts/deactivate.bat"
+```
+
+
+**If planning to start the jupyter server in a virtual machine in cloud**
+
+```
+source virtenv/bin/activate //Activate virtual environment
+
+jupyter server --generate-config //To generate "jupyter_server_config.py" inside "/.jupyter" folder
+
+jupyter server password //To password protect our jupyter notebooks
+
+Enter password:  ****
+Verify password: ****
+[JupyterPasswordApp] Wrote hashed password to /.jupyter/jupyter_server_config.json
+
+```
 Create cert files
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout ~/.jupyter/mykey.key -out ~/.jupyter/mycert.pem
@@ -62,21 +66,12 @@ c = get_config()
 c.ServerApp.ip = '*'
 c.ServerApp.open_browser = False
 c.ServerApp.port = 8888
-
-# most likeyly because of virtual environment
+# Since we are in virtual environment
 import os
 c.ServerApp.keyfile = os.path.expanduser('~') + '/.jupyter/mykey.key'
 c.ServerApp.certfile = os.path.expanduser('~') + '/.jupyter/mycert.pem'
 ```
 
-**Deactivate virtual environment**
-
-```markdown
-# Windows
-"virtenv/Scripts/deactivate.bat"
-# Linux
-deactivate
-```
 
 ### Apache Spark
 

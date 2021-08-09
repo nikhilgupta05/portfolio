@@ -16,8 +16,10 @@ Think of it as new OS (or a new machine) for your python installation. And NOT a
 
 **Activate virtual environment**
 ```markdown
-"virtenv/Scripts/activate.bat"  # Windows
-source virtenv/bin/activate  # Linux
+# Windows
+"virtenv/Scripts/activate.bat"
+# Linux
+source virtenv/bin/activate
 ```
 
 **Jupyter**
@@ -25,6 +27,20 @@ Jupyter is the most popular IDE for python (and few other languages like Julia, 
 
 ```markdown
 pip install jupyterlab
+
+```
+Below statement generate "jupyter_server_config.py" inside "/.jupyter" folder
+```
+jupyter server --generate-config
+```
+
+To password protect our jupyter notebooks
+```
+jupyter server password
+Enter password:  ****
+Verify password: ****
+[JupyterPasswordApp] Wrote hashed password to /.jupyter/jupyter_server_config.json
+
 ```
 
 **Jupyter notebooks** A jupyter server is started, and a browser window talks to server in a secured manner over REST API.
@@ -33,10 +49,33 @@ jupyter notebook
 jupyter lab
 ```
 
-**Deactivate virtual environment**
+** If planning to start the jupyter server in a virtual machine in cloud**
+Create cert files
 ```
-"virtenv/Scripts/deactivate.bat" # Windows
-deactivate # Linux
+openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout ~/.jupyter/mykey.key -out ~/.jupyter/mycert.pem
+```
+Edit jupyter_server_config.py and add below code at the begining (vi .jupyter/jupyter_server_config.py, click "I", copy pase, Esc, :wq)
+
+```markdown
+c = get_config()
+
+c.ServerApp.ip = '*'
+c.ServerApp.open_browser = False
+c.ServerApp.port = 8888
+
+# most likeyly because of virtual environment
+import os
+c.ServerApp.keyfile = os.path.expanduser('~') + '/.jupyter/mykey.key'
+c.ServerApp.certfile = os.path.expanduser('~') + '/.jupyter/mycert.pem'
+```
+
+**Deactivate virtual environment**
+
+```markdown
+# Windows
+"virtenv/Scripts/deactivate.bat"
+# Linux
+deactivate
 ```
 
 ### Apache Spark
